@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "noEmitOnError": true,
+    "lib": [
+      "esnext.asynciterable",
+      "es2015"
+    ]
+  }
+}
