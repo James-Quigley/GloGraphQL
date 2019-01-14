@@ -2,5 +2,6 @@
   "version": 2,
   "builds": [
     { "src": "graphql/index.ts", "use": "@now/node-server@canary" }
-  ]
+  ],
+  "alias": "glo-graphql.now.sh"
 }
