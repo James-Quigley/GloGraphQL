@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc -w",
-    "start": "concurrently \"npm run build:watch\" \"nodemon --inspect --watch dist\"",
+    "start": "concurrently \"npm run build:watch\" \"nodemon --delay 2000ms --inspect --watch dist\"",
     "production": "NODE_ENV=production node .",
     "now-build":"npm run build"
   },

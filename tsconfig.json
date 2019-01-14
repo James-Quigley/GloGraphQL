@@ -5,6 +5,9 @@
     "lib": [
       "esnext.asynciterable",
       "es2015"
-    ]
-  }
+    ],
+  },
+  "include": [
+    "graphql"
+  ]
 }
