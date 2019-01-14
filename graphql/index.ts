@@ -8,7 +8,7 @@ const app = express();
 
 app.use('/*', graphqlHTTP({
   schema,
-  graphiql: process.env.NODE_ENV !== 'production'
+  graphiql: true
 }));
 
 app.listen(8080);
