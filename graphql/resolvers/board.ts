@@ -6,14 +6,14 @@ export default async (parentValue, args, request) => {
   }
 
   try {
-    const board = (await axios.get(`https://devgloapi.gitkraken.com/v1/glo/boards/${args.id}?fields=id,name,columns,archived_columns,invited_members,members,archived_date,labels,created_date,updated_date,created_by`, {
+    const board = (await axios.get(`https://gloapi.gitkraken.com/v1/glo/boards/${args.id}?fields=id,name,columns,archived_columns,invited_members,members,archived_date,labels,created_date,updated_date,created_by`, {
         headers: {
           "Authorization": request.headers.authorization,
           "Content-Type": "application/json"
         }
       })).data;
 
-    const cards = (await axios.get(`https://devgloapi.gitkraken.com/v1/glo/boards/${args.id}/cards?fields=id,name,description,board_id,column_id,created_date,updated_date,members,labels,due_date`, {
+    const cards = (await axios.get(`https://gloapi.gitkraken.com/v1/glo/boards/${args.id}/cards?fields=id,name,description,board_id,column_id,created_date,updated_date,members,labels,due_date`, {
         headers: {
           "Authorization": request.headers.authorization,
           "Content-Type": "application/json"

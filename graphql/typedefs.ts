@@ -4,9 +4,10 @@ type User {
   name: String
   username: String
   email: String
-  avatar_url: String
-  created_date: String
-  updated_date: String
+}
+
+type PartialUser {
+  id: ID!
 }
 
 type Color {
@@ -21,20 +22,23 @@ type Label {
   name: String!
   color: Color
   created_date: String
-  created_by: User
+  created_by: PartialUser
 }
 
 type Attachment {
   id: ID!
   filename: String
   created_date: String
-  created_by: String
+  created_by: PartialUser
   mime_type: String
 }
 
 type Description {
   text: String
   created_date: String
+  updated_date: String
+  created_by: PartialUser
+  updated_by: PartialUser
 }
 
 type Card {
@@ -45,17 +49,29 @@ type Card {
   column_id: String
   created_date: String
   updated_date: String
-  members: [User]
+  archived_date: String
+  assignees: [User]
   labels: [Label]
-  due_date: String
+  due_date: String,
+  comment_count: Int
+  attachment_count: Int
+  completed_task_count: Int
+  total_task_count: Int
+  created_by: PartialUser
 }
 
 type Column {
   id: ID!
   name: String
   created_date: String
-  created_by: User
-  cards: [Card]
+  created_by: PartialUser
+  archived_date: String
+}
+
+type BoardMember {
+  id: ID!
+  role: String
+  username: String
 }
 
 type Board {
@@ -63,13 +79,12 @@ type Board {
   name: String!
   columns: [Column]
   archived_columns: [Column]
-  invited_members: [String]
-  members: [User]
+  invited_members: [BoardMember]
+  members: [BoardMember]
   archived_date: String
   labels: [Label]
   created_date: String
-  updated_date: String
-  created_by: User
+  created_by: PartialUser
 }
 
 type Comment {
@@ -78,11 +93,13 @@ type Comment {
   board_id: String
   created_date: String
   updated_date: String
-  created_by: User
+  created_by: PartialUser
   text: String
 }
 
 type Query {
   board(id: ID!): Board
+  boards: [Board]
+  user: User
 }
 `;
